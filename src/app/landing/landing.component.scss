@@ -1,0 +1,116 @@
+.jamtech-container {
+    margin: 0 auto;
+    width:1400px;
+}
+
+#jamtech-top-bar{
+    background:whitesmoke;
+    border: black;
+    border-width: 1;
+    height:50px;
+}
+
+.jamtech-top-bar {
+    display: flex;
+    align-items: center;
+    width:100%;
+}
+
+.top-bar-left,
+.top-bar-right,
+.top-bar-middle {
+    width:100%;
+}
+
+.top-bar-right{
+    display: flex;
+    justify-content: flex-end;
+}
+.top-bar-right button{
+    margin: 5px;
+}
+
+.jamtech-logo .mat-icon {
+    justify-content: flex-start;
+    width: 50%;
+    padding: 0 10px;
+}
+
+.jamtech-header {
+    display: flex;
+    width:100%;
+    justify-content: center;
+}
+
+.jamtech-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.jamtech-header {
+    width:100%;
+}
+
+.jamtech-header .jamtech-header-img {
+    position: relative;
+    height: auto;
+    width: 100%;
+}
+
+.jamtech-header-mission {
+    position: absolute;
+    bottom: -200px;
+    right: 200px;
+}
+
+.jamtech-header-mission h2 {
+    color:white;
+    background: rgb(0,0,0,0.5)
+}
+
+.jamtech-content {
+    display: flex;
+    width:100%;
+    margin-top:20px;
+}
+
+.jamtech-intro{
+    display:flex;
+    flex-direction: row; 
+    flex-wrap: wrap;
+    width:100%;
+}
+
+.jamtech-intro-content,
+.jamtech-intro-content-image {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.jamtech-intro-content {
+    width:45%;
+}
+
+.jamtech-intro-content h3 {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.jamtech-intro-content h4{
+    font-size: 1.4rem;
+    margin: 1rem 0rem;
+}
+.jamtech-intro-content-image {
+    padding:16px;
+    width:50%;
+}
+.jamtech-intro-content-image img {
+    width:100%;
+}
+
+
+mat-card-content p {
+    font-size: x-large;
+    padding: 0rem 1rem;
+}
