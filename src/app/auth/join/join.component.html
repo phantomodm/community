@@ -1,42 +1,50 @@
 <mat-card>
-    
-        <mat-card-title>Join Us</mat-card-title>
-        <mat-card-content>
-            <form #joinUs formGroup="form">
+    <mat-card-title>Join Us</mat-card-title>
+    <mat-card-content>
+        <form #joinUs formGroup="form">
+            <table>
+                <tr>
+                    <td>
+                        <mat-form-field>
+                            <input matInput type="text" placeholder="First Name" formControlName="first_name"
+                                #firstName>
+                            <div *ngIf="firstName.invalid && firstName.touched">First name is requried.</div>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field>
+                            <input matInput type="text" placeholder="Last Name" formControlName="last_name" #lastName>
+                            <div *ngIf="lastName.invalid && firstName.touched">Last name is requried.</div>
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+            <p>
                 <mat-form-field>
-                    <input matInput type="text"
-                    placeholder="First Name"
-                    formControlName="first_name" #firstName>
-                    <div *ngIf="firstName.invalid && firstName.touched">First name is requried.</div>
-                    <input matInput type="text"
-                    placeholder="Last Name"
-                    formControlName="last_name"  #lastName>
-                    <div *ngIf="lastName.invalid && firstName.touched">Last name is requried.</div>
-                </mat-form-field>
-                <mat-form-field>
-                    <input matInput type="email"
-                    placeholder="email"
-                    formControlName=Email  #email>
+                    <input matInput type="email" placeholder="email" formControlName=Email #email>
                     <div *ngIf="!emailControlIsValid">Email is not valid</div>
                 </mat-form-field>
-                <mat-form-field>
-                    <input matInput type="password"
-                    placeholder="Create Password"
-                    formControlName=password  #password>
-                    <div *ngIf="!passwordControlIsValid">Must enter 6+ characters.</div>
-                    
-                    <input matInput type="password"
-                    placeholder="Confirm Password"
-                    formControlName=confirm_password #confirmPassword>
-                    <div *ngIf="confirmPassword == password && confirmPassword.touched">Passwords do not match. Please renter password</div>
-                </mat-form-field>
-                
-                <button mat-raised-button color="primary"
-                (click)="join()"
-                [disabled]="!form.valid"
-                *ngIf="!isLoading">Join Us</button>
-            </form>    
-        </mat-card-content>
-
-    
+            </p>
+            <table>
+                <tr>
+                    <td>
+                        <mat-form-field>
+                            <input matInput type="password" placeholder="Create Password" formControlName=password
+                                #password>
+                            <div *ngIf="!passwordControlIsValid">Must enter 6+ characters.</div>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field>
+                            <input matInput type="password" placeholder="Confirm Password"
+                                formControlName=confirm_password #confirmPassword>
+                            <div *ngIf="confirmPassword == password && confirmPassword.touched">Passwords do not match.
+                                Please renter password</div>
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+            <button mat-raised-button color="primary" (click)="join()" [disabled]="!form.valid" *ngIf="!isLoading">Join Us</button>
+        </form>
+    </mat-card-content>
 </mat-card>

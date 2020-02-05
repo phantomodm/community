@@ -22,3 +22,23 @@ export class User {
         return this._tokenExpirationDate.getTime() - new Date().getTime();
     }
 }
+
+export class UserProfile {
+    constructor(
+        public id:string,
+        public firstName: string,
+        public middleName: string,
+        public lastName: string,
+        public address: string,
+        public address1: string,
+        public city: string,
+        public state: string,
+        public zipCode: number,
+        public phone: string,
+        public email: string,
+        public registered: Date,
+        public isActive: boolean,
+        public jobFields: string[],
+        private _appliedJobs: [{}]
+    ){}
+}
