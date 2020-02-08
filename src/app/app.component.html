@@ -1,1 +1,54 @@
-<router-outlet></router-outlet>
+<h3>Home Page for new visitors and persons not loggedIn</h3>
+<!-- 
+<div *ngIf="isLoggedIn">
+    <router-outlet></router-outlet>
+</div>
+
+<h3>Logged into app</h3> -->
+<div >
+    <mat-sidenav-container fullscreen>
+
+        <mat-sidenav #start>
+            <mat-nav-list (click)="start.close()">
+    
+                <a mat-list-item routerLink="/home">
+                    <mat-icon>house</mat-icon>
+                    <span>Home</span>
+                </a>
+
+                <a mat-list-item routerLink="/dashboard/start" *ngIf="isLoggedIn">
+                    <mat-icon>library_books</mat-icon>
+                    <span>Dashboard</span>
+                </a>
+    
+                <a mat-list-item routerLink="/auth/login" (click)="login()" *ngIf="!isLoggedIn">
+                    <mat-icon>account_circle</mat-icon>
+                    <span>Login</span>
+                </a>
+    
+                <a mat-list-item  routerLink="/auth/login" (click)="logout()" *ngIf="isLoggedIn">
+                    <mat-icon>exit_to_app</mat-icon>
+                    <span>Logout</span>
+                </a>
+    
+            </mat-nav-list>
+    
+        </mat-sidenav>
+    
+        <mat-toolbar color="primary">
+            <button class="menu-button" mat-icon-button (click)="start.open('mouse')">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </mat-toolbar>
+    
+      <!-- <div class="spinner-container" >
+    
+        <mat-spinner></mat-spinner>
+    
+      </div> -->
+    
+        <router-outlet></router-outlet>
+    
+    </mat-sidenav-container>
+</div>
+

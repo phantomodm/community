@@ -1,0 +1,170 @@
+<mat-card>
+    <form [formGroup]="newUserForm">
+        <mat-vertical-stepper>
+            <mat-step>
+                <mat-icon icon="thumbs-up"></mat-icon>
+                <ng-template matStepLabel>Company Profile</ng-template>
+                <mat-horizontal-stepper>
+                    <mat-step>
+                        <ng-template matStepLabel>Profile</ng-template>
+                        <div class="vertical-container">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="First Name" formControlName="first_name" #firstName>
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Middle Initial" formControlName="middle_name">
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Last Initial" formControlName="last_name">
+                                        </mat-form-field>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Address" formControlName="address">
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Address1" formControlName="address1">
+                                        </mat-form-field>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="City" formControlName="city">
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="State" formControlName="state">
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Zip Code" formControlName="zip">
+                                        </mat-form-field>
+                                    </td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Phone Number" formControlName="phone_number">
+                                        </mat-form-field>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="vertical-view__button">
+                                <button mat-raised-button matStepperNext type="button" color="accent">Next</button>
+                            </div>
+                        </div>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>Social Media</ng-template>
+                        <div class="vertical-container">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Website" formControlName="website">
+                                        </mat-form-field>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Twitter" formControlName="social_twitter">
+                                        </mat-form-field>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Facebook" formControlName="social_facebook">
+                                        </mat-form-field>
+                                    </td>
+                                </tr>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="LinkedIn" formControlName="social_linkedin">
+                                        </mat-form-field>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="vertical-view__button">
+                                <button mat-button matStepperPrevious type="button">Back</button>
+                                <button mat-raised-button matStepperNext type="button" color="accent">Next</button>
+                            </div>
+                        </div>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>Skills</ng-template>
+                        <div class="vertical-container">
+                            <table>
+                                <tr>
+                                    <mat-form-field>
+                                        <mat-chip-list #skillChips aria-label="Skills">
+                                            <mat-chip *ngFor="let skill of skills" [selectable]="selectable"
+                                                [removable]="removable" formControlName="industry_skillification"
+                                                (remove)="remove(skill)">
+                                                {{skill}}
+                                                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                            </mat-chip>
+
+                                            <input placeholder="Skills..." [matAutoComplete]="auto"
+                                                [matChipInputFor]="skillChips"
+                                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                                (matChipInputTokenEnd)="add($event)">
+                                        </mat-chip-list>
+                                        <mat-autocomplete #auto="matAutoComplete" (optionSelected)="selected($event)">
+                                            <mat-option *ngFor="let skill of filteredSkills | async" [value]="skill">
+                                                {{skill}}
+                                            </mat-option>
+                                        </mat-autocomplete>
+                                    </mat-form-field>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Twitter" formControlName="social_twitter">
+                                        </mat-form-field>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="vertical-view__button">
+                                <button mat-button matStepperPrevious type="button">Back</button>
+                                <button mat-raised-button matStepperNext type="submit" color="accent">Submit</button>
+                            </div>
+                        </div>
+                    </mat-step>
+                </mat-horizontal-stepper>
+            </mat-step>
+            <mat-step>
+                <mat-icon icon="thumbs-up"></mat-icon>
+                <ng-template matStepLabel>Thank You</ng-template>
+                <div>
+                    <mat-card-title><h3>Thanks {{firstName.value}}.</h3></mat-card-title>
+                    <div class="finalize-form__button">
+                        <button mat-raised-button type="button" [routerLink]="[ '/path', routeParam ]">Back</button>
+                        <button mat-raised-button type="submit" color="primary" [routerLink]="[ '/path', routeParam ]"> </button>
+                    </div>
+                </div>
+            </mat-step>
+
+
+        </mat-vertical-stepper>
+    </form>
+</mat-card>

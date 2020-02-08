@@ -1,0 +1,147 @@
+<mat-card>
+    <form [formGroup]="newCompanyForm">
+        <mat-vertical-stepper>
+            <mat-step>
+                <mat-icon></mat-icon>
+                <ng-template matStepLabel>Company</ng-template>
+                <mat-horizontal-stepper>
+                    <mat-step>
+                        <mat-icon></mat-icon>
+                        <ng-template matStepLabel>Company Info</ng-template>
+                        <div class="vertical-container">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <mat-select placeholder="Company Industry" [(ngModel)]="selectedValue"
+                                            formControlName="company_industry" name="item">
+                                            <mat-option *ngFor="let option of items.options" [value]="option">
+                                                {{option}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Company Name" formControlName="company_name" #companyName>
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Hiring Manager"
+                                                formControlName="hiring_manager">
+                                        </mat-form-field>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Address" formControlName="address">
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Address1" formControlName="address1">
+                                        </mat-form-field>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Phone Number" formControlName="phone_number">
+                                        </mat-form-field>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="vertical-view__button">
+                                <button mat-raised-button matStepperNext type="button" color="accent">Next</button>
+                            </div>
+                        </div>
+                    </mat-step>
+                    <mat-step>
+                        <mat-icon></mat-icon>
+                        <ng-template matStepLabel>Company</ng-template>
+                        <div class="vertical-container">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Website" formControlName="website">
+                                        </mat-form-field>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="LinkedIn" formControlName="social_linkedin">
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Twitter" formControlName="social_twitter">
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Facebook" formControlName="social_facebook">
+                                        </mat-form-field>
+                                    </td>
+                                </tr>
+                                
+                            </table>
+                            <div class="vertical-view__button">
+                                <button mat-button matStepperPrevious type="button">Back</button>
+                                <button mat-raised-button matStepperNext type="button" color="accent">Next</button>
+                            </div>
+                        </div>
+                    </mat-step>
+                    <mat-step>
+                        <mat-icon></mat-icon>
+                        <ng-template matStepLabel>Certifications</ng-template>
+                        <div>
+                            <tr>
+                                <td>
+                                    <mat-form-field>
+                                        <mat-chip-list #certChips aria-label="M/WBE Certifications">
+                                            <mat-chip *ngFor="let cert of certs" 
+                                                [selectable]="selectable"
+                                                [removable]="removable"
+                                                formControlName="industry_certification"
+                                                (remove)="remove(cert)">
+                                                {{cert}}
+                                                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                            </mat-chip>
+
+                                            <input placeholder="Business Certification..." 
+                                                [matAutoComplete]="auto"
+                                                [matChipInputFor]="certChips"
+                                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                                (matChipInputTokenEnd)="add($event)">
+                                        </mat-chip-list>
+                                        <mat-autocomplete #auto="matAutoComplete"
+                                            (optionSelected)="selected($event)">
+                                            <mat-option *ngFor="let cert of filteredCerts | async" [value]="cert">
+                                                {{cert}}
+                                            </mat-option>
+                                        </mat-autocomplete>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                        </div>
+                    </mat-step>
+                </mat-horizontal-stepper>
+            </mat-step>
+            <mat-step>
+                <mat-icon icon="thumbs-up"></mat-icon>
+                <ng-template matStepLabel>Thank You</ng-template>
+                <div>
+                    <mat-card-title><h3>Thanks {{companyName.value}} for your commitment to South Jamaica.</h3></mat-card-title>
+                    <div class="finalize-form__button">
+                        <button mat-raised-button type="button" [routerLink]="[ '/path', routeParam ]">Back</button>
+                        <button mat-raised-button type="submit" color="primary" [routerLink]="[ '/path', routeParam ]"> </button>
+                    </div>
+                </div>
+            </mat-step>
+        </mat-vertical-stepper>
+    </form>
+</mat-card>

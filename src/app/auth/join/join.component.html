@@ -1,7 +1,7 @@
-<mat-card>
+<mat-card class="join-page">
     <mat-card-title>Join Us</mat-card-title>
     <mat-card-content>
-        <form #joinUs formGroup="form">
+        <form #joinUs [formGroup]="form" class="join-form">
             <table>
                 <tr>
                     <td>
@@ -21,7 +21,7 @@
             </table>
             <p>
                 <mat-form-field>
-                    <input matInput type="email" placeholder="email" formControlName=Email #email>
+                    <input matInput type="email" placeholder="email" formControlName=email #email>
                     <div *ngIf="!emailControlIsValid">Email is not valid</div>
                 </mat-form-field>
             </p>
@@ -44,7 +44,8 @@
                     </td>
                 </tr>
             </table>
-            <button mat-raised-button color="primary" (click)="join()" [disabled]="!form.valid" *ngIf="!isLoading">Join Us</button>
+            <button mat-raised-button color="primary" (click)="join()" [disabled]="!form.valid" *ngIf="!isLoading">Join
+                Us</button>
         </form>
     </mat-card-content>
 </mat-card>

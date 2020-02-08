@@ -39,6 +39,42 @@ export class UserProfile {
         public registered: Date,
         public isActive: boolean,
         public jobFields: string[],
+        public workProfile: Resume,
+        private _accountPublic: boolean,
         private _appliedJobs: [{}]
     ){}
+}
+
+export class CompanyProfile {
+    constructor(
+        public id:string,
+        public companyName: string,
+        public companyAdmin: string,
+        public address: string,
+        public address1: string,
+        public city: string,
+        public state: string,
+        public zipCode: number,
+        public phone: string,
+        public email: string,
+        public registered: Date,
+        public website: string,
+        public careerLink: string,
+        public isActive: boolean,
+        public jobFields: string[],
+        private _currentOpenings: [{}]
+    ){}
+}
+
+export interface Resume {
+    executive_summary?: string;
+    objective?: string;
+    work_experience?: [{}];
+    education?: [{}];
+    resume?:[];
+    references?:[{
+        name:string;
+        position:string;
+        comment:string;
+    } ]
 }

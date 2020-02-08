@@ -11,21 +11,22 @@ export class AuthGuard implements CanActivate, CanLoad {
 
     
     canLoad(route:Route, segments: UrlSegment[]):Observable<boolean> | Promise<boolean> | boolean {
-        return this.authService.user.pipe(
-            take(1),
-            (switchMap(currentUser => {
-                if(!currentUser || !currentUser.token){
-                    return this.authService.autoLogin();
-                }
-                return of(true)
-            })),
-            tap(isAuth => {
-                if (!isAuth){
-                    this.router.navigate(['/login'])
-                } 
+        return true;
+        // return this.authService.user.pipe(
+        //     take(1),
+        //     (switchMap(currentUser => {
+        //         if(!currentUser || !currentUser.token){
+        //             return this.authService.autoLogin();
+        //         }
+        //         return of(true)
+        //     })),
+        //     tap(isAuth => {
+        //         if (!isAuth){
+        //             this.router.navigate(['/login'])
+        //         } 
 
-            })
-        );
+        //     })
+        // );
     }
 
     canActivate(

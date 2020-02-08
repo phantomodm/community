@@ -10,7 +10,8 @@ import {
     MatButtonModule,
     MatProgressSpinnerModule,
     MatListModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSidenavModule
     
   } from '@angular/material';
 
@@ -28,6 +29,7 @@ import {
         MatProgressSpinnerModule,
         MatListModule,
         MatToolbarModule,
+        MatSidenavModule,
         ReactiveFormsModule
     ],
     providers: [],

@@ -1,28 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {ReactiveFormsModule} from '@angular/forms';
-import { HomeComponent } from './home/home.component';
 import { NetworkRoutingModule } from './network-routing.module';
 
-// import { 
-//     MatMenuModule,
-//     MatIconModule,
-//     MatSidenavModule,
-//     MatProgressSpinnerModule,
-//     MatListModule,
-//     MatToolbarModule,
-//  } from '@angular/material';
+import { 
+    MatTableModule
+ } from '@angular/material';
 
 //Shared Modules
 import { SharedModule } from '../shared/shared.module';
-import { NetworkComponent } from './network.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
-    declarations: [HomeComponent,NetworkComponent],
+    declarations: [ DashboardComponent,HomeComponent],
     imports: [ 
         CommonModule,
         NetworkRoutingModule,
+        MatTableModule,
         // MatMenuModule,
         // MatIconModule,
         // MatSidenavModule,
@@ -32,7 +27,7 @@ import { NetworkComponent } from './network.component';
         // ReactiveFormsModule,
         SharedModule
     ],
-    exports: [HomeComponent],
+    exports: [DashboardComponent],
     providers: [],
 })
 

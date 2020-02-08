@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +9,23 @@ import { AuthService } from './auth/auth.service';
 })
 
 export class AppComponent implements OnInit {
-  title = 'jamtech';
+  isLoggedIn = false;
+  isLoggedOut = true;
 
-  constructor(private authService:AuthService){}
+  constructor(private authService:AuthService, private router: Router){}
 
   ngOnInit(){
    
+  }
+
+  login(){
+    this.isLoggedIn = true;
+    this.isLoggedOut = false
+    this.router.navigate(['/dashboard/start'])
+  }
+
+  logout(){
+    this.isLoggedOut = true;
+    this.isLoggedIn = false;
   }
 }

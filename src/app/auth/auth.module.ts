@@ -11,16 +11,23 @@ import { LoginComponent } from './login/login.component';
 
 import { StoreModule } from '@ngrx/store';
 import { SharedModule } from '../shared/shared.module';
+import { CompanySignUpComponent } from './join/company-sign-up/company-sign-up.component';
+import { UserSignUpComponent } from './join/user-sign-up/user-sign-up.component';
+import { MatStepperModule, MatSelectModule, MatCheckboxModule, MatChipsModule } from '@angular/material';
 //import * as fromAuth from './reducers';
 //import {authReducer} from './reducers';
 //import {EffectsModule} from '@ngrx/effects';
 //import {AuthEffects} from './auth.effects';
 
 @NgModule({
-    declarations: [LoginComponent, JoinComponent],
+    declarations: [LoginComponent, JoinComponent, CompanySignUpComponent, UserSignUpComponent],
     imports: [ CommonModule,
         MatCardModule,
         MatInputModule,
+        MatStepperModule,
+        MatSelectModule,
+        MatCheckboxModule,
+        MatChipsModule,
         AuthRoutingModule,
         SharedModule
         //StoreModule.forFeature('auth', authReducer),

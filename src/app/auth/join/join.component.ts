@@ -19,10 +19,10 @@ export class JoinComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      first_name: ['',[Validators.required],],
-      last_name: ['',[Validators.required]],
-      email: ["isa@jamtech.nyc",[Validators.required]],
-      password:['',[Validators.required,Validators.minLength(6), Validators.maxLength(10), Validators.pattern]],
+      first_name: ['',[Validators.required] ],
+      last_name: ['',[Validators.required] ],
+      email: ["isa@jamtech.nyc",[Validators.required] ],
+      password:['',[Validators.required,Validators.minLength(6), Validators.maxLength(10), Validators.pattern] ],
       confirm_password:['',[Validators.required]]
     })
 
@@ -30,12 +30,13 @@ export class JoinComponent implements OnInit {
       this.emailControlIsValid = status === 'VALID'
     })
 
-    this.form.get('email').statusChanges.subscribe(status => {
-      this.emailControlIsValid = status === 'VALID'
+    this.form.get('password').statusChanges.subscribe(status => {
+      this.passwordControlIsValid = status === 'VALID'
     })
 
-
   }
+
+
 
   join(){
     this.email.nativeElement.focus();

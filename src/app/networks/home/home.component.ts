@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DUMMY } from './dummy';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  displayedColumns: string[] = ['name', 'company', 'openings', 'neighborhood'];
+  dataSource = DUMMY;
 
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

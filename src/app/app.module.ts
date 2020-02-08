@@ -52,6 +52,7 @@ import { AuthGuard } from './auth/auth.guard';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    SharedModule,
     NgbModule,
     AuthModule.forRoot(),
     StoreModule.forRoot(reducers, {
